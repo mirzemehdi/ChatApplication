@@ -12,7 +12,7 @@ App is not connected to the server so all messages are generated randomly. User 
 
 
 ### Installing
-apk link:  https://github.com/mirzemehdi/ChatApplication/blob/main/demo/chat_app.apk  
+apk link:  https://github.com/mirzemehdi/ChatApplication/raw/main/demo/chat_app.apk  
 
 
 ## Used Technologies  
