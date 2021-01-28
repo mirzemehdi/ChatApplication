@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listItem"
+            type="com.mmk.chat.model.ChatPOJO" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_profile"
+            imageUrl="@{listItem.chatImage}"
+            android:layout_width="@dimen/conversation_person_image_size"
+            android:layout_height="@dimen/conversation_person_image_size"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.AppTheme.RoundedCorner"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/icon_online"
+            android:layout_width="@dimen/online_icon_image_size"
+            android:layout_height="@dimen/online_icon_image_size"
+            android:layout_margin="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/image_profile"
+            app:layout_constraintEnd_toEndOf="@id/image_profile"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.AppTheme.RoundedCorner" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:maxLines="1"
+            android:text="@{listItem.chatTitle}"
+            android:textColor="?attr/colorOnBackground"
+            android:textSize="@dimen/conversation_person_name_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/tv_user_last_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image_profile"
+            app:layout_constraintTop_toTopOf="@+id/image_profile"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_user_last_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:maxLines="1"
+            android:textColor="?attr/colorInActive"
+            app:layout_constrainedWidth="true"
+
+            app:layout_constraintBottom_toBottomOf="@+id/image_profile"
+            app:layout_constraintEnd_toStartOf="@+id/tv_user_last_message_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/image_profile"
+            app:layout_constraintStart_toStartOf="@+id/tv_user_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tv_user_last_message_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:text="@{`• `+listItem.lastMessage.sendingTime}"
+            android:textColor="?attr/colorInActive"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_last_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_user_last_message"
+            app:layout_constraintTop_toTopOf="@+id/tv_user_last_message"
+            tools:text="• 11:30 AM" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

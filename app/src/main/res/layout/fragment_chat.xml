@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mmk.chat.ui.chat.ChatViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_chat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:viewModel="@{viewModel}" />
+
+        <ProgressBar
+            showOnLoading="@{viewModel.chatUiState}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messagesRecyclerView"
+            showOnHasData="@{viewModel.chatUiState}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/text_input_layout_write_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:listitem="@layout/item_chat_me" />
+
+        <ImageButton
+            android:id="@+id/button_take_photo"
+            android:layout_width="@dimen/btn_take_photo_size"
+            android:layout_height="@dimen/btn_take_photo_size"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@id/text_input_layout_write_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_input_layout_write_message"
+
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_write_message"
+            style="@style/Widget.AppTheme.MaterialComponents.CustomTextInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:hintEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_send_message"
+            app:layout_constraintStart_toEndOf="@id/button_take_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:hint="@string/hint_type_message"
+
+                android:text="@={viewModel.messageText}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/button_send_message"
+            android:layout_width="@dimen/btn_send_message_size"
+            android:layout_height="@dimen/btn_send_message_size"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/ic_send"
+            android:enabled="@{viewModel.messageText.length()>0}"
+            android:onClick="@{()->viewModel.onClickSendMessage()}"
+            app:layout_constraintBottom_toBottomOf="@id/text_input_layout_write_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_input_layout_write_message" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,32 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorDarkBlue</item>
+        <item name="colorPrimaryVariant">@color/colorDarkBlue</item>
+        <item name="colorOnPrimary">@color/colorWhite</item>
+        <item name="android:colorBackground">@color/colorWhiteSmoke</item>
+        <item name="colorOnBackground">@color/colorThunder</item>
+        <item name="colorInActive">@color/colorGrayDusty</item>
+        <item name="colorHelpText">@color/colorSilver</item>
+
+    </style>
+
+    <style name="ShapeAppearanceOverlay.AppTheme.RoundedCorner" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Widget.AppTheme.MaterialComponents.CustomTextInputLayout"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">?attr/colorInActive</item>
+        <item name="boxBackgroundColor">?attr/colorHelpText</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/inputs_box_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/inputs_box_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/inputs_box_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/inputs_box_corner_radius</item>
+
+    </style>
+
+</resources>

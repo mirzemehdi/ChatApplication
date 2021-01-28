@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Chat Application</string>
+    <string name="toolbar_conversations">Conversations</string>
+    <string name="hint_search">Search for friends</string>
+    <string name="hint_type_message">Start typing...</string>
+    <string name="text_active_now">Active now</string>
+    <string name="last_seen_time">Last seen: %s</string>
+    <string name="last_message_other">%s: %s</string>
+    <string name="last_message_me">You: %s</string>
+
+
+</resources>
